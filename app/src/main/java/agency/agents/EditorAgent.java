@@ -12,6 +12,6 @@ public class EditorAgent extends AbstractGigaChatAgent {
 
     @Override
     protected String buildUserPrompt(String text) {
-        return text;
+        return "Edit the following Russian text for style and readability, keeping the author's voice. Respond only with the edited text:\n\n" + text;
     }
 }

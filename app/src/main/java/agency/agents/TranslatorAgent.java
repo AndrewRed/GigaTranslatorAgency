@@ -12,6 +12,6 @@ public class TranslatorAgent extends AbstractGigaChatAgent {
 
     @Override
     protected String buildUserPrompt(String text) {
-        return text;
+        return "Translate the following English text into Russian and respond only with the translation:\n\n" + text;
     }
 }

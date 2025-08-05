@@ -12,6 +12,6 @@ public class ProofreaderAgent extends AbstractGigaChatAgent {
 
     @Override
     protected String buildUserPrompt(String text) {
-        return text;
+        return "Proofread the following Russian text correcting grammar, spelling, and punctuation while preserving style. Respond only with the corrected text:\n\n" + text;
     }
 }
