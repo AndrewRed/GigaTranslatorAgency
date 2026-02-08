@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giga Translator Agency</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        background: #f3f5f9;
+        color: #20222a;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+
+      .notice {
+        padding: 12px;
+        border-left: 4px solid #e09100;
+        background: #fff7e6;
+        margin-bottom: 16px;
+        border-radius: 6px;
+      }
+
+      .controls,
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      button,
+      select,
+      input[type='text'] {
+        font: inherit;
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 1px solid #c6cad8;
+        background: #fff;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      button.primary {
+        background: #2258ff;
+        color: #fff;
+        border-color: #2258ff;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .panel {
+        background: #fff;
+        border: 1px solid #d8dce8;
+        border-radius: 12px;
+        padding: 12px;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 260px;
+        resize: vertical;
+        border: 1px solid #c6cad8;
+        border-radius: 10px;
+        padding: 10px;
+        font: inherit;
+      }
+
+      .pairs {
+        margin-top: 12px;
+        border-top: 1px solid #e2e5ef;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid #edf0f7;
+      }
+
+      .chip {
+        display: inline-block;
+        margin-left: 8px;
+        opacity: 0;
+        transform: translateY(-2px);
+        transition: all .2s ease;
+        color: #0d7a45;
+      }
+
+      .chip.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 900px) {
+        .split,
+        .row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Giga Translator Agency</h1>
+
+      <div class="notice">
+        ⚠️ Черновики исходного текста и перевода сохраняются в браузере (localStorage) для удобства восстановления.
+        Не используйте это устройство для обработки конфиденциальных данных.
+      </div>
+
+      <div class="controls">
+        <label>
+          Исходный язык:
+          <select id="sourceLang">
+            <option value="auto">Авто</option>
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+          </select>
+        </label>
+        <label>
+          Целевой язык:
+          <select id="targetLang">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </label>
+        <button id="translateBtn" class="primary">Перевести</button>
+      </div>
+
+      <div class="actions">
+        <button id="copyBtn">Скопировать</button><span id="copyChip" class="chip">Скопировано</span>
+        <button id="downloadTxtBtn">Скачать .txt</button>
+        <button id="downloadDocxBtn">Скачать .docx</button>
+        <button id="retryBtn">Повторить с теми же параметрами</button>
+        <button id="clearBtn">Очистить</button>
+      </div>
+
+      <section class="split">
+        <article class="panel">
+          <h2>Оригинал</h2>
+          <textarea id="sourceText" placeholder="Вставьте текст для перевода..."></textarea>
+        </article>
+        <article class="panel">
+          <h2>Перевод</h2>
+          <textarea id="translatedText" readonly placeholder="Результат перевода появится здесь..."></textarea>
+        </article>
+      </section>
+
+      <section class="panel pairs">
+        <h3>Сопоставление по абзацам</h3>
+        <div id="paragraphPairs"></div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
