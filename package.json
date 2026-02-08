@@ -1,0 +1,16 @@
+{
+  "name": "giga-translator-agency",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "worker": "node worker.js",
+    "lint": "node --check server.js && node --check worker.js && node --check public/app.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ioredis": "^5.4.1",
+    "pg": "^8.12.0",
+    "uuid": "^11.0.3"
+  }
+}

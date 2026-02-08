@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giga Translator Agency</title>
+  </head>
+  <body>
+    <h1>Giga Translator Agency</h1>
+    <form id="translateForm">
+      <label>
+        Target language
+        <input id="targetLang" value="ru" />
+      </label>
+      <br />
+      <textarea id="sourceText" rows="8" cols="70" placeholder="Text to translate"></textarea>
+      <br />
+      <button type="submit">Translate</button>
+    </form>
+
+    <p id="status"></p>
+    <pre id="result"></pre>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
