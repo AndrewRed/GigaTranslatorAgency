@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GigaTranslatorAgency</title>
+    <style>
+      :root {
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      }
+      body {
+        margin: 2rem;
+        max-width: 720px;
+      }
+      textarea {
+        width: 100%;
+        min-height: 120px;
+        margin-bottom: 0.75rem;
+      }
+      #status {
+        min-height: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .status-error {
+        color: #b42318;
+      }
+      #troubleshooting {
+        display: none;
+        border: 1px solid #e4e7ec;
+        border-radius: 8px;
+        padding: 0.6rem 0.75rem;
+        background: #f9fafb;
+        font-size: 0.92rem;
+        margin-bottom: 1rem;
+      }
+      #troubleshooting.show {
+        display: block;
+      }
+      #troubleshooting .title {
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+      }
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .cta-row button {
+        border: 1px solid #d0d5dd;
+        background: white;
+        border-radius: 6px;
+        padding: 0.35rem 0.65rem;
+        cursor: pointer;
+      }
+      #output {
+        border: 1px solid #e4e7ec;
+        border-radius: 8px;
+        min-height: 100px;
+        padding: 0.75rem;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>GigaTranslatorAgency</h1>
+
+    <textarea id="input" placeholder="Введите текст для перевода"></textarea>
+    <button id="translateBtn">Перевести</button>
+
+    <p id="status" role="status" aria-live="polite"></p>
+
+    <div id="troubleshooting" aria-live="polite">
+      <div class="title">Что можно сделать сейчас:</div>
+      <div class="cta-row">
+        <button id="retryBtn" type="button">Повторить</button>
+        <button id="checkKeyBtn" type="button">Проверить API key</button>
+        <button id="reduceTextBtn" type="button">Уменьшить объём текста</button>
+      </div>
+    </div>
+
+    <div id="output"></div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
