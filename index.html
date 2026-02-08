@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GigaTranslatorAgency</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>GigaTranslatorAgency</h1>
+      <p class="subtitle">Перевод текста в два шага: быстрый запуск или гибкая настройка.</p>
+
+      <form id="translatorForm" novalidate>
+        <fieldset class="mode-selector">
+          <legend>Режим работы</legend>
+          <label>
+            <input type="radio" name="mode" value="quick" checked />
+            Быстрый старт
+          </label>
+          <label>
+            <input type="radio" name="mode" value="advanced" />
+            Расширенные настройки
+          </label>
+        </fieldset>
+
+        <div class="field">
+          <label for="sourceText">Текст для перевода</label>
+          <textarea
+            id="sourceText"
+            name="sourceText"
+            rows="6"
+            placeholder="Пример: Hello! Please translate this text to Russian."
+            required
+            minlength="2"
+            maxlength="5000"
+          ></textarea>
+          <p class="hint">Вставьте исходный текст. От 2 до 5000 символов.</p>
+          <p class="error" id="sourceTextError"></p>
+        </div>
+
+        <details id="advancedAccordion" class="accordion">
+          <summary>Для продвинутых</summary>
+          <div class="accordion-content">
+            <div class="field">
+              <label for="apiKey">API ключ</label>
+              <input
+                type="password"
+                id="apiKey"
+                name="apiKey"
+                placeholder="Пример: sk_live_xxxxxxxxxxxxx"
+                autocomplete="off"
+                inputmode="text"
+              />
+              <p class="hint">Требуется только для режима «Расширенные настройки».</p>
+              <p class="error" id="apiKeyError"></p>
+            </div>
+
+            <div class="field">
+              <label for="baseUrl">Base URL</label>
+              <input
+                type="url"
+                id="baseUrl"
+                name="baseUrl"
+                value="https://gigachat.devices.sberbank.ru/api/v1"
+                placeholder="Пример: https://gigachat.devices.sberbank.ru/api/v1"
+              />
+              <p class="hint">Безопасное значение по умолчанию уже заполнено.</p>
+              <p class="error" id="baseUrlError"></p>
+            </div>
+
+            <div class="field">
+              <label for="model">Модель</label>
+              <input
+                type="text"
+                id="model"
+                name="model"
+                value="GigaChat"
+                placeholder="Пример: GigaChat"
+                pattern="^[a-zA-Z0-9_.:-]{2,50}$"
+              />
+              <p class="hint">Оставьте по умолчанию, если не уверены.</p>
+              <p class="error" id="modelError"></p>
+            </div>
+          </div>
+        </details>
+
+        <button type="submit" id="submitBtn">Перевести</button>
+      </form>
+
+      <section class="result">
+        <h2>Результат</h2>
+        <pre id="resultOutput">Здесь появится перевод...</pre>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
