@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GigaTranslatorAgency</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>GigaTranslatorAgency</h1>
+      <p class="subtitle">Литературный перевод английской прозы на русский язык через OpenAI-compatible API.</p>
+
+      <form id="translator-form">
+        <section class="card">
+          <h2>Параметры API</h2>
+          <label>OpenAI-compatible Base URL
+            <input id="baseUrl" name="baseUrl" placeholder="https://api.openai.com/v1" />
+          </label>
+          <label>API Key
+            <input id="apiKey" name="apiKey" type="password" placeholder="sk-..." />
+          </label>
+          <label>Модель
+            <input id="model" name="model" placeholder="gpt-4o-mini" />
+          </label>
+        </section>
+
+        <section class="card">
+          <h2>Книга</h2>
+          <label>Название
+            <input id="title" name="title" placeholder="Название произведения" />
+          </label>
+          <label>Автор
+            <input id="author" name="author" placeholder="Имя автора" />
+          </label>
+          <label>Заметки редактора
+            <textarea id="notes" name="notes" rows="3" placeholder="Нюансы стиля, эпоха, целевая аудитория..."></textarea>
+          </label>
+          <label>Исходный текст (английский)
+            <textarea id="text" name="text" rows="12" placeholder="Paste English text here..." required></textarea>
+          </label>
+        </section>
+
+        <button type="submit" id="submit-btn">Перевести</button>
+      </form>
+
+      <section class="card">
+        <h2>Результат</h2>
+        <div id="status"></div>
+        <textarea id="result" rows="16" readonly placeholder="Здесь появится литературный перевод..."></textarea>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
